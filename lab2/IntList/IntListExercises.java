@@ -9,6 +9,8 @@ public class IntListExercises {
      * @param lst IntList from Lecture
      */
     public static void addConstant(IntList lst, int c) {
+        if (lst==null) return;
+
         IntList head = lst;
         while (head.rest != null) {
             head.first += c;
@@ -29,18 +31,27 @@ public class IntListExercises {
             if (firstDigitEqualsLastDigit(max(p))) {
                 p.first = 0;
             }
+
+            if (p.rest == L) return;
             p = p.rest;
         }
     }
 
     /** Returns the max value in the IntList starting at L. */
     public static int max(IntList L) {
+        if (L==null) {
+          crash;
+        }
+
         int max = L.first;
         IntList p = L.rest;
         while (p != null) {
             if (p.first > max) {
                 max = p.first;
             }
+
+            if (p.rest == L) return max;
+
             p = p.rest;
         }
         return max;
@@ -50,6 +61,8 @@ public class IntListExercises {
      *  the first digit of x.
      */
     public static boolean firstDigitEqualsLastDigit(int x) {
+        if (x<0) x=-x;
+
         int lastDigit = x % 10;
         while (x > 10) {
             x = x / 10;
@@ -76,6 +89,7 @@ public class IntListExercises {
         if (currElemIsPrime) {
             lst.first *= lst.first;
         }
+
 
         return currElemIsPrime || squarePrimes(lst.rest);
     }
