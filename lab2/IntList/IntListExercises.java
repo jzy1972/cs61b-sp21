@@ -31,17 +31,12 @@ public class IntListExercises {
             if (firstDigitEqualsLastDigit(max(p))) {
                 p.first = 0;
             }
-
-            if (p.rest == L) return;
             p = p.rest;
         }
     }
 
     /** Returns the max value in the IntList starting at L. */
     public static int max(IntList L) {
-        if (L==null) {
-          crash;
-        }
 
         int max = L.first;
         IntList p = L.rest;
@@ -49,8 +44,6 @@ public class IntListExercises {
             if (p.first > max) {
                 max = p.first;
             }
-
-            if (p.rest == L) return max;
 
             p = p.rest;
         }
@@ -61,8 +54,6 @@ public class IntListExercises {
      *  the first digit of x.
      */
     public static boolean firstDigitEqualsLastDigit(int x) {
-        if (x<0) x=-x;
-
         int lastDigit = x % 10;
         while (x > 10) {
             x = x / 10;
